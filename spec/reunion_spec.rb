@@ -68,4 +68,17 @@ RSpec.describe Activity do
 
     expect(reunion.breakout).to eq({"Maria" => -10, "Luther" => -30, "Louis" => 40})
   end
+
+  it 'can print a summary of the breakout' do
+    activity_1.add_participant("Maria", 20)
+    activity_1.add_participant("Luther", 40)
+    reunion.add_activity(activity_1)
+    activity_2.add_participant("Maria", 60)
+    activity_2.add_participant("Luther", 60)
+    activity_2.add_participant("Louis", 0)
+    reunion.add_activity(activity_2)
+    expect(reunion.breakout).to eq({"Maria" => -10, "Luther" => -30, "Louis" => 40})
+
+    expect(reunion.summary).to eq("Maria: -10\nLuther: -30\nLouis: 40")
+  end
 end
