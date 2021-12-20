@@ -12,8 +12,18 @@ class Reunion
     @total_cost += activity.total_cost
   end
 
-  # def breakout
-    # key is a person's name
-    # value is what they owe for the whole reunion as a combo
-    # from all activities
+  def breakout
+    breakout = {}
+    @activities.each do |activity|
+      activity.owed.each_pair do |name, amt_owed|
+        if breakout.has_key?(name)
+          breakout[name] += amt_owed
+        elsif !breakout.has_key?(name)
+          breakout[name] = amt_owed
+        end
+
+      end
+    end
+    breakout
+  end
 end

@@ -41,4 +41,31 @@ RSpec.describe Activity do
 
     expect(reunion.total_cost).to eq(60)
   end
+
+  it 'can add multiple activities and calculate total cost to include all activities' do
+    activity_1.add_participant("Maria", 20)
+    activity_1.add_participant("Luther", 40)
+    reunion.add_activity(activity_1)
+    expect(reunion.total_cost).to eq(60)
+
+    activity_2.add_participant("Maria", 60)
+    activity_2.add_participant("Maria", 60)
+    activity_2.add_participant("Louis", 0)
+
+    reunion.add_activity(activity_2)
+
+    expect(reunion.total_cost).to eq(180)
+  end
+
+  it 'creates a breakout of all costs in hash form' do
+    activity_1.add_participant("Maria", 20)
+    activity_1.add_participant("Luther", 40)
+    reunion.add_activity(activity_1)
+    activity_2.add_participant("Maria", 60)
+    activity_2.add_participant("Luther", 60)
+    activity_2.add_participant("Louis", 0)
+    reunion.add_activity(activity_2)
+
+    expect(reunion.breakout).to eq({"Maria" => -10, "Luther" => -30, "Louis" => 40})
+  end
 end

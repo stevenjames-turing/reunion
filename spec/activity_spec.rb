@@ -39,4 +39,14 @@ RSpec.describe Activity do
     expect(activity.split).to eq(30)
     expect(activity.owed).to eq({"Maria" => 10, "Luther" => -10})
   end
+
+  it 'can split the costs among 3+ participants' do
+    activity.add_participant("Maria", 60)
+    activity.add_participant("Luther", 60)
+    activity.add_participant("Louis", 0)
+
+    expect(activity.total_cost).to eq(120)
+    expect(activity.split).to eq(40)
+    expect(activity.owed).to eq({"Maria" => -20, "Luther" => -20, "Louis" => 40})
+  end
 end
