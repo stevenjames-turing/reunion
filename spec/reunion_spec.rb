@@ -22,7 +22,23 @@ RSpec.describe Activity do
 
   it 'can add activities and store in array' do
     reunion.add_activity(activity_1)
-    
+
     expect(reunion.activities).to eq([activity_1])
+  end
+
+  it 'begins with a total cost of 0' do
+    expect(reunion.activities).to eq([])
+    expect(reunion.total_cost).to eq(0)
+  end
+
+  it 'adding activities increases the total cost owed for the entire reunion' do
+    expect(reunion.total_cost).to eq(0)
+
+    activity_1.add_participant("Maria", 20)
+    activity_1.add_participant("Luther", 40)
+
+    reunion.add_activity(activity_1)
+
+    expect(reunion.total_cost).to eq(60)
   end
 end
