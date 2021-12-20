@@ -13,7 +13,6 @@ class Activity
   end
 
   def split
-    # @total_cost.fdiv(@participants.count)
     @total_cost / @participants.count
   end
 
