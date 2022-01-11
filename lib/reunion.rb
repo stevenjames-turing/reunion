@@ -48,10 +48,9 @@ class Reunion
       if !detailed_breakout.has_key?(participant)
         # creates hash of participant names and assigns to open array
         detailed_breakout[participant] = []
-
         @activities.each do |activity|
           if activity.participants.has_key?(participant)
-            # creates has with :activity, :payees, :amount inside of participant hash
+            # creates hash with :activity, :payees, :amount inside of participant hash
             detailed_breakout[participant] << {:activity=> activity.name, :payees=> [], :amount=> 0}
           end
         end
@@ -63,18 +62,25 @@ class Reunion
         end
       end
     end
-    #
+
     # @activities.each do |activity|
     #   activity.owed.each_pair do |name, amt_owed|
+    #     if
     #     if activity.name == detailed_breakout[name][0][:activity]
     #
+    #
+    #
+    #
     #       detailed_breakout[name][0][:payees] << name if detailed_breakout[name]
-
-
-
-    # breakout.each_pair do |participant, total_owed|
-    #   if !detailed_breakout.has_key?(participant)
-    #     # creates hash of participant names and assigns to open array
+    #     end
+    #   end
+    # end
+    #
+    #
+    #
+    # # breakout.each_pair do |participant, total_owed|
+    # #   if !detailed_breakout.has_key?(participant)
+    # #     # creates hash of participant names and assigns to open array
     #     detailed_breakout[participant] = []
     #
     #
